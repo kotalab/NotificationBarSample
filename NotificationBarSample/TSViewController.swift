@@ -9,8 +9,15 @@
 import UIKit
 import TSMessages
 
+// https://github.com/KrauseFx/TSMessages
 class TSViewController: UIViewController {
 
+    @IBOutlet weak var notificationType: UISegmentedControl!
+    @IBOutlet weak var notificationPosition: UISegmentedControl!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var titleText: UITextField!
+    @IBOutlet weak var subtitleText: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,15 +30,40 @@ class TSViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension TSViewController {
+    
+    @IBAction func durationSlider(sender: AnyObject) {
+        
+        guard let slider = sender as? UISlider else {
+            return
+        }
+        durationLabel.text = "\(slider.value)"
     }
-    */
+    
+    @IBAction func pushNotificationButton(sender: AnyObject) {
+        let type = TSMessageNotificationType(rawValue: notificationType.selectedSegmentIndex)
+        let position = TSMessageNotificationPosition(rawValue: notificationPosition.selectedSegmentIndex)
+        let durationDouble = Double(durationLabel.text ?? "0") ?? 0
+        
+        TSMessage.showNotificationInViewController(self,
+            title: titleText.text,
+            subtitle: subtitleText.text,
+            image: nil,
+            type: type!,
+            duration: durationDouble,
+            callback: nil,
+            buttonTitle: nil,
+            buttonCallback: nil,
+            atPosition: position!,
+            canBeDismissedByUser: true)
+    }
+}
 
+extension TSViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

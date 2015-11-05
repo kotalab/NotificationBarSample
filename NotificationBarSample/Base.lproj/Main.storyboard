@@ -53,9 +53,101 @@
                     <view key="view" contentMode="scaleToFill" id="14H-Rk-pRu">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DjS-5N-aYW">
+                                <rect key="frame" x="160" y="94" width="279" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="Message"/>
+                                    <segment title="Warning"/>
+                                    <segment title="Error"/>
+                                    <segment title="Success"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="L43-ht-l6j">
+                                <rect key="frame" x="143" y="152" width="314" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="Top"/>
+                                    <segment title="NavBarOverlay"/>
+                                    <segment title="Bottom"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byT-SB-ack">
+                                <rect key="frame" x="260" y="378" width="79" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Notification"/>
+                                <connections>
+                                    <action selector="pushNotificationButton:" destination="Uan-aR-8PX" eventType="touchUpInside" id="XM9-7p-ujc"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subtitle" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TlX-AX-VKb">
+                                <rect key="frame" x="200" y="318" width="200" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="0bc-Pk-YNm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Uan-aR-8PX" id="N7E-ea-dbO"/>
+                                </connections>
+                            </textField>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="K9l-1E-zh8">
+                                <rect key="frame" x="28" y="198" width="544" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="durationSlider:" destination="Uan-aR-8PX" eventType="valueChanged" id="koH-pm-Xb6"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EA3-23-rlO">
+                                <rect key="frame" x="30" y="236" width="24" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SBF-MD-U9l">
+                                <rect key="frame" x="200" y="258" width="200" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Ecr-qp-1gU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Uan-aR-8PX" id="xK0-EG-y8b"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EA3-23-rlO" firstAttribute="leading" secondItem="14H-Rk-pRu" secondAttribute="leading" constant="30" id="0V3-Cl-fwC"/>
+                            <constraint firstItem="DjS-5N-aYW" firstAttribute="centerX" secondItem="14H-Rk-pRu" secondAttribute="centerX" id="17X-2I-zwR"/>
+                            <constraint firstItem="TlX-AX-VKb" firstAttribute="centerX" secondItem="14H-Rk-pRu" secondAttribute="centerX" id="20U-HO-kXc"/>
+                            <constraint firstItem="DjS-5N-aYW" firstAttribute="top" secondItem="bRD-qA-5Q2" secondAttribute="bottom" constant="30" id="7Jx-oI-6dY"/>
+                            <constraint firstItem="byT-SB-ack" firstAttribute="centerX" secondItem="14H-Rk-pRu" secondAttribute="centerX" id="9YK-bx-A1m"/>
+                            <constraint firstItem="L43-ht-l6j" firstAttribute="centerX" secondItem="14H-Rk-pRu" secondAttribute="centerX" id="G05-YX-4zV"/>
+                            <constraint firstItem="K9l-1E-zh8" firstAttribute="top" secondItem="L43-ht-l6j" secondAttribute="bottom" constant="18" id="Ggf-Uf-Q2J"/>
+                            <constraint firstItem="SBF-MD-U9l" firstAttribute="top" secondItem="K9l-1E-zh8" secondAttribute="bottom" constant="30" id="M5W-9Y-AJg"/>
+                            <constraint firstItem="TlX-AX-VKb" firstAttribute="top" secondItem="SBF-MD-U9l" secondAttribute="bottom" constant="30" id="PRL-EA-NeJ"/>
+                            <constraint firstItem="byT-SB-ack" firstAttribute="top" secondItem="TlX-AX-VKb" secondAttribute="bottom" constant="30" id="fn3-Ef-WVt"/>
+                            <constraint firstItem="K9l-1E-zh8" firstAttribute="centerX" secondItem="14H-Rk-pRu" secondAttribute="centerX" id="haS-Ad-iJG"/>
+                            <constraint firstItem="L43-ht-l6j" firstAttribute="top" secondItem="DjS-5N-aYW" secondAttribute="bottom" constant="30" id="hlh-o2-1VI"/>
+                            <constraint firstAttribute="trailing" secondItem="K9l-1E-zh8" secondAttribute="trailing" constant="30" id="sfi-Uk-iA6"/>
+                            <constraint firstItem="SBF-MD-U9l" firstAttribute="centerX" secondItem="14H-Rk-pRu" secondAttribute="centerX" id="u7z-K2-3zn"/>
+                            <constraint firstItem="K9l-1E-zh8" firstAttribute="leading" secondItem="14H-Rk-pRu" secondAttribute="leading" constant="30" id="uJb-3I-dbE"/>
+                            <constraint firstItem="EA3-23-rlO" firstAttribute="top" secondItem="K9l-1E-zh8" secondAttribute="bottom" constant="8" id="xuh-2W-yWa"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="durationLabel" destination="EA3-23-rlO" id="VB8-TS-K1K"/>
+                        <outlet property="notificationPosition" destination="L43-ht-l6j" id="u3F-wa-DpE"/>
+                        <outlet property="notificationType" destination="DjS-5N-aYW" id="Fxw-ad-QEJ"/>
+                        <outlet property="subtitleText" destination="TlX-AX-VKb" id="Y7s-Gh-pWy"/>
+                        <outlet property="titleText" destination="SBF-MD-U9l" id="DEb-Fb-rzT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOS-L9-zU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
