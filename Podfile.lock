@@ -1,0 +1,19 @@
+PODS:
+  - CWStatusBarNotification (2.3.3)
+  - HexColors (2.2.1)
+  - JDStatusBarNotification (1.5.2)
+  - TSMessages (0.9.12):
+    - HexColors (~> 2.2.0)
+
+DEPENDENCIES:
+  - CWStatusBarNotification
+  - JDStatusBarNotification
+  - TSMessages
+
+SPEC CHECKSUMS:
+  CWStatusBarNotification: 2349142e97c9f16fb8247ed3c00308cd355d334b
+  HexColors: abfd172e329dab59888614ccba6f216cec59289d
+  JDStatusBarNotification: a36d09ccbb047217572b074a61e7ca10dddc5f0a
+  TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
+
+COCOAPODS: 0.39.0
