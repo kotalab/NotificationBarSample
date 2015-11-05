@@ -1,6 +1,6 @@
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'TSMessages'
+pod 'TSMessages', :git => 'https://github.com/KrauseFx/TSMessages.git'
 pod 'CWStatusBarNotification'
 pod 'JDStatusBarNotification'
