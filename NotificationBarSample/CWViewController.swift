@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CWStatusBarNotification
 
-class ViewController: UIViewController {
+class CWViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.navigationItem.title = "CWStatusBar"
     }
 
     override func didReceiveMemoryWarning() {
