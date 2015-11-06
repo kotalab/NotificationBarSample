@@ -47,7 +47,7 @@ extension TSViewController {
         let position = TSMessageNotificationPosition(rawValue: notificationPosition.selectedSegmentIndex)
         let durationDouble = Double(durationLabel.text ?? "0") ?? 0
         
-        TSMessage.showNotificationInViewController(self,
+        TSMessage.showNotificationInViewController(self.navigationController,
             title: titleText.text,
             subtitle: subtitleText.text,
             image: nil,
