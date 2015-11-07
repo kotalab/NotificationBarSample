@@ -24,6 +24,7 @@ class TSViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.title = "TSMessage"
+        durationLabel.text = "Duration: \(durationSlider.value)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +41,7 @@ extension TSViewController {
         guard let slider = sender as? UISlider else {
             return
         }
-        durationLabel.text = "\(slider.value)"
+        durationLabel.text = "Duration: \(slider.value)"
     }
     
     @IBAction func pushNotificationButton(sender: AnyObject) {
