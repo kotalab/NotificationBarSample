@@ -206,6 +206,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2Hq-rI-Qj8" id="z3X-7k-fB0"/>
+                                </connections>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fdv-1T-FwH">
                                 <rect key="frame" x="376" y="253" width="51" height="31"/>
@@ -272,9 +275,119 @@
                     <view key="view" contentMode="scaleToFill" id="xzX-Q0-fi3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqO-dZ-VDE">
+                                <rect key="frame" x="261" y="436" width="79" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Notification"/>
+                                <connections>
+                                    <action selector="pushNotificationButton:" destination="3qm-2O-Tbu" eventType="touchUpInside" id="GlV-vi-JxO"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pSX-UJ-GrL">
+                                <rect key="frame" x="121" y="152" width="359" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="FromTop"/>
+                                    <segment title="FromBottom"/>
+                                    <segment title="FromLeft"/>
+                                    <segment title="FromRight"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="x7t-5P-sKY">
+                                <rect key="frame" x="153" y="210" width="295" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="ToTop"/>
+                                    <segment title="ToBottom"/>
+                                    <segment title="ToLeft"/>
+                                    <segment title="ToRight"/>
+                                </segments>
+                            </segmentedControl>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9hh-9m-o5z">
+                                <rect key="frame" x="28" y="256" width="544" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="slideAnimationDuration:" destination="3qm-2O-Tbu" eventType="valueChanged" id="gVi-5E-nvg"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s68-Dv-5M8">
+                                <rect key="frame" x="30" y="294" width="77" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="u6c-EV-hIl">
+                                <rect key="frame" x="28" y="316" width="544" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="slideDisplayDuration:" destination="3qm-2O-Tbu" eventType="valueChanged" id="GqP-QI-q2q"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DisplayDuration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LG4-4T-3b0">
+                                <rect key="frame" x="30" y="354" width="121" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yNZ-Ko-Kzg">
+                                <rect key="frame" x="200" y="376" width="200" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="AyR-7S-ojm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="3qm-2O-Tbu" id="bho-qF-xs8"/>
+                                </connections>
+                            </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qaR-8E-G35">
+                                <rect key="frame" x="201" y="94" width="199" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="StatusBar"/>
+                                    <segment title="NavigationBar"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yNZ-Ko-Kzg" firstAttribute="centerX" secondItem="xzX-Q0-fi3" secondAttribute="centerX" id="0d7-Qu-5cr"/>
+                            <constraint firstItem="x7t-5P-sKY" firstAttribute="top" secondItem="pSX-UJ-GrL" secondAttribute="bottom" constant="30" id="3m4-Mn-wsI"/>
+                            <constraint firstAttribute="trailing" secondItem="9hh-9m-o5z" secondAttribute="trailing" constant="30" id="7Tb-os-v8Y"/>
+                            <constraint firstItem="pSX-UJ-GrL" firstAttribute="top" secondItem="qaR-8E-G35" secondAttribute="bottom" constant="30" id="Buq-X3-7Kb"/>
+                            <constraint firstItem="pSX-UJ-GrL" firstAttribute="centerX" secondItem="xzX-Q0-fi3" secondAttribute="centerX" id="DGP-FV-Cns"/>
+                            <constraint firstItem="LG4-4T-3b0" firstAttribute="top" secondItem="u6c-EV-hIl" secondAttribute="bottom" constant="8" id="Jxf-ZA-ZxC"/>
+                            <constraint firstItem="9hh-9m-o5z" firstAttribute="top" secondItem="x7t-5P-sKY" secondAttribute="bottom" constant="18" id="LIE-H4-P4x"/>
+                            <constraint firstItem="UqO-dZ-VDE" firstAttribute="centerX" secondItem="xzX-Q0-fi3" secondAttribute="centerX" id="NXc-ks-5r2"/>
+                            <constraint firstItem="9hh-9m-o5z" firstAttribute="leading" secondItem="xzX-Q0-fi3" secondAttribute="leading" constant="30" id="Wug-3Y-aMo"/>
+                            <constraint firstItem="qaR-8E-G35" firstAttribute="centerX" secondItem="xzX-Q0-fi3" secondAttribute="centerX" id="a6K-qp-t5n"/>
+                            <constraint firstItem="s68-Dv-5M8" firstAttribute="leading" secondItem="xzX-Q0-fi3" secondAttribute="leading" constant="30" id="dER-ly-ROc"/>
+                            <constraint firstItem="x7t-5P-sKY" firstAttribute="centerX" secondItem="xzX-Q0-fi3" secondAttribute="centerX" id="deu-6L-sDl"/>
+                            <constraint firstItem="LG4-4T-3b0" firstAttribute="leading" secondItem="xzX-Q0-fi3" secondAttribute="leading" constant="30" id="dzh-zf-RlA"/>
+                            <constraint firstAttribute="trailing" secondItem="u6c-EV-hIl" secondAttribute="trailing" constant="30" id="jyT-sP-yNp"/>
+                            <constraint firstItem="UqO-dZ-VDE" firstAttribute="top" secondItem="yNZ-Ko-Kzg" secondAttribute="bottom" constant="30" id="kBJ-Pb-fEz"/>
+                            <constraint firstItem="u6c-EV-hIl" firstAttribute="top" secondItem="9hh-9m-o5z" secondAttribute="bottom" constant="30" id="op3-Wq-PmD"/>
+                            <constraint firstItem="qaR-8E-G35" firstAttribute="top" secondItem="8dO-bi-ot5" secondAttribute="bottom" constant="30" id="pWl-4H-u6Y"/>
+                            <constraint firstItem="u6c-EV-hIl" firstAttribute="leading" secondItem="xzX-Q0-fi3" secondAttribute="leading" constant="30" id="tJ2-wy-5rK"/>
+                            <constraint firstItem="yNZ-Ko-Kzg" firstAttribute="top" secondItem="u6c-EV-hIl" secondAttribute="bottom" constant="30" id="wo0-zy-ZOS"/>
+                            <constraint firstItem="s68-Dv-5M8" firstAttribute="top" secondItem="9hh-9m-o5z" secondAttribute="bottom" constant="8" id="xdG-gr-ShN"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="animataionSlider" destination="9hh-9m-o5z" id="dFC-JD-RmM"/>
+                        <outlet property="animationDurationLabel" destination="s68-Dv-5M8" id="sDl-VU-Wku"/>
+                        <outlet property="barPosition" destination="qaR-8E-G35" id="a2U-Qv-UBW"/>
+                        <outlet property="displayDurationLabel" destination="LG4-4T-3b0" id="edq-Dt-wih"/>
+                        <outlet property="displaySlider" destination="u6c-EV-hIl" id="4Fw-PT-eP6"/>
+                        <outlet property="fromAnimation" destination="pSX-UJ-GrL" id="ffr-88-Lo5"/>
+                        <outlet property="titleTextField" destination="yNZ-Ko-Kzg" id="jBd-hf-2bJ"/>
+                        <outlet property="toAnimation" destination="x7t-5P-sKY" id="4Gl-aE-hQ3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccn-6c-5mZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

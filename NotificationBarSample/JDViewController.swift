@@ -91,3 +91,10 @@ extension JDViewController {
     }
     
 }
+
+extension JDViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
