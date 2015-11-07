@@ -44,19 +44,19 @@ extension TSViewController {
     }
     
     @IBAction func pushNotificationButton(sender: AnyObject) {
-        let type = TSMessageNotificationType(rawValue: notificationType.selectedSegmentIndex)
-        let position = TSMessageNotificationPosition(rawValue: notificationPosition.selectedSegmentIndex)
+        let type = TSMessageNotificationType(rawValue: notificationType.selectedSegmentIndex) ?? .Message
+        let position = TSMessageNotificationPosition(rawValue: notificationPosition.selectedSegmentIndex) ?? .Top
         
         TSMessage.showNotificationInViewController(self.navigationController,
             title: titleText.text,
             subtitle: subtitleText.text,
             image: nil,
-            type: type!,
+            type: type,
             duration: Double(durationSlider.value),
             callback: nil,
             buttonTitle: nil,
             buttonCallback: nil,
-            atPosition: position!,
+            atPosition: position,
             canBeDismissedByUser: true)
     }
 }
