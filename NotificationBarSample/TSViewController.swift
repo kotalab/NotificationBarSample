@@ -17,6 +17,7 @@ class TSViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var titleText: UITextField!
     @IBOutlet weak var subtitleText: UITextField!
+    @IBOutlet weak var durationSlider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class TSViewController: UIViewController {
 
 extension TSViewController {
     
-    @IBAction func durationSlider(sender: AnyObject) {
+    @IBAction func slideDuration(sender: AnyObject) {
         
         guard let slider = sender as? UISlider else {
             return
@@ -45,14 +46,13 @@ extension TSViewController {
     @IBAction func pushNotificationButton(sender: AnyObject) {
         let type = TSMessageNotificationType(rawValue: notificationType.selectedSegmentIndex)
         let position = TSMessageNotificationPosition(rawValue: notificationPosition.selectedSegmentIndex)
-        let durationDouble = Double(durationLabel.text ?? "0") ?? 0
         
         TSMessage.showNotificationInViewController(self.navigationController,
             title: titleText.text,
             subtitle: subtitleText.text,
             image: nil,
             type: type!,
-            duration: durationDouble,
+            duration: Double(durationSlider.value),
             callback: nil,
             buttonTitle: nil,
             buttonCallback: nil,
