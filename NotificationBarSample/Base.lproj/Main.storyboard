@@ -93,15 +93,8 @@
                                     <outlet property="delegate" destination="Uan-aR-8PX" id="N7E-ea-dbO"/>
                                 </connections>
                             </textField>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="K9l-1E-zh8">
-                                <rect key="frame" x="28" y="198" width="544" height="31"/>
-                                <animations/>
-                                <connections>
-                                    <action selector="durationSlider:" destination="Uan-aR-8PX" eventType="valueChanged" id="koH-pm-Xb6"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EA3-23-rlO">
-                                <rect key="frame" x="30" y="236" width="24" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EA3-23-rlO">
+                                <rect key="frame" x="30" y="236" width="65.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -119,6 +112,13 @@
                                     <outlet property="delegate" destination="Uan-aR-8PX" id="xK0-EG-y8b"/>
                                 </connections>
                             </textField>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="K9l-1E-zh8">
+                                <rect key="frame" x="28" y="198" width="544" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="slideDuration:" destination="Uan-aR-8PX" eventType="valueChanged" id="smV-tD-2vX"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -143,6 +143,7 @@
                     </view>
                     <connections>
                         <outlet property="durationLabel" destination="EA3-23-rlO" id="VB8-TS-K1K"/>
+                        <outlet property="durationSlider" destination="K9l-1E-zh8" id="Ddm-UA-utg"/>
                         <outlet property="notificationPosition" destination="L43-ht-l6j" id="u3F-wa-DpE"/>
                         <outlet property="notificationType" destination="DjS-5N-aYW" id="Fxw-ad-QEJ"/>
                         <outlet property="subtitleText" destination="TlX-AX-VKb" id="Y7s-Gh-pWy"/>
@@ -164,9 +165,97 @@
                     <view key="view" contentMode="scaleToFill" id="XNP-mM-uKF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Sa-8x-ExO">
+                                <rect key="frame" x="373" y="371" width="54" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="pushDismissButton:" destination="2Hq-rI-Qj8" eventType="touchUpInside" id="hm0-yl-Ays"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ibd-Tx-uSN">
+                                <rect key="frame" x="179" y="94" width="243" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="None"/>
+                                    <segment title="Move"/>
+                                    <segment title="Bounce"/>
+                                    <segment title="Fade"/>
+                                </segments>
+                            </segmentedControl>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="3UR-Vq-oWe">
+                                <rect key="frame" x="28" y="140" width="544" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="slideDuration:" destination="2Hq-rI-Qj8" eventType="valueChanged" id="thS-py-eYu"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCA-rp-vGY">
+                                <rect key="frame" x="30" y="178" width="65.5" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nea-KN-b1G">
+                                <rect key="frame" x="200" y="200" width="200" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="yAs-Nf-E9c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fdv-1T-FwH">
+                                <rect key="frame" x="376" y="253" width="51" height="31"/>
+                                <animations/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="indicator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6S3-eQ-faE">
+                                <rect key="frame" x="266" y="260" width="67" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35O-Wp-qp0">
+                                <rect key="frame" x="360" y="311" width="79" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Notification"/>
+                                <connections>
+                                    <action selector="pushNotificationButton:" destination="2Hq-rI-Qj8" eventType="touchUpInside" id="iRp-wj-7am"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6S3-eQ-faE" firstAttribute="centerX" secondItem="XNP-mM-uKF" secondAttribute="centerX" id="3mu-pf-j9X"/>
+                            <constraint firstItem="6S3-eQ-faE" firstAttribute="top" secondItem="nea-KN-b1G" secondAttribute="bottom" constant="30" id="783-nL-98n"/>
+                            <constraint firstItem="ibd-Tx-uSN" firstAttribute="top" secondItem="6Sc-dQ-xbd" secondAttribute="bottom" constant="30" id="Gsh-nh-PPV"/>
+                            <constraint firstItem="nea-KN-b1G" firstAttribute="centerX" secondItem="XNP-mM-uKF" secondAttribute="centerX" id="KBQ-mM-upL"/>
+                            <constraint firstItem="aCA-rp-vGY" firstAttribute="leading" secondItem="XNP-mM-uKF" secondAttribute="leading" constant="30" id="NsI-Q8-RJy"/>
+                            <constraint firstItem="3UR-Vq-oWe" firstAttribute="leading" secondItem="XNP-mM-uKF" secondAttribute="leading" constant="30" id="OU6-UR-2oG"/>
+                            <constraint firstItem="35O-Wp-qp0" firstAttribute="top" secondItem="6S3-eQ-faE" secondAttribute="bottom" constant="30" id="R9r-nP-Lws"/>
+                            <constraint firstItem="4Sa-8x-ExO" firstAttribute="centerX" secondItem="XNP-mM-uKF" secondAttribute="centerX" constant="100" id="RgH-ec-8GW"/>
+                            <constraint firstAttribute="trailing" secondItem="3UR-Vq-oWe" secondAttribute="trailing" constant="30" id="VCi-lj-6o1"/>
+                            <constraint firstItem="fdv-1T-FwH" firstAttribute="top" secondItem="nea-KN-b1G" secondAttribute="bottom" constant="23" id="XEg-8W-dOa"/>
+                            <constraint firstItem="3UR-Vq-oWe" firstAttribute="top" secondItem="ibd-Tx-uSN" secondAttribute="bottom" constant="18" id="b6e-WA-BHT"/>
+                            <constraint firstItem="aCA-rp-vGY" firstAttribute="top" secondItem="3UR-Vq-oWe" secondAttribute="bottom" constant="8" id="kJa-Z1-4dC"/>
+                            <constraint firstItem="ibd-Tx-uSN" firstAttribute="centerX" secondItem="XNP-mM-uKF" secondAttribute="centerX" id="nAR-Ax-NfB"/>
+                            <constraint firstItem="4Sa-8x-ExO" firstAttribute="top" secondItem="35O-Wp-qp0" secondAttribute="bottom" constant="30" id="np8-gd-38B"/>
+                            <constraint firstItem="35O-Wp-qp0" firstAttribute="centerX" secondItem="XNP-mM-uKF" secondAttribute="centerX" constant="100" id="pDQ-Im-7hp"/>
+                            <constraint firstItem="fdv-1T-FwH" firstAttribute="centerX" secondItem="XNP-mM-uKF" secondAttribute="centerX" constant="100" id="x49-dw-ojG"/>
+                            <constraint firstItem="nea-KN-b1G" firstAttribute="top" secondItem="3UR-Vq-oWe" secondAttribute="bottom" constant="30" id="xBo-5p-0AM"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="animationType" destination="ibd-Tx-uSN" id="XMr-Xh-AN4"/>
+                        <outlet property="durationLabel" destination="aCA-rp-vGY" id="ew5-G4-mEA"/>
+                        <outlet property="durationSlider" destination="3UR-Vq-oWe" id="VHf-nN-ifq"/>
+                        <outlet property="indicatorSwitch" destination="fdv-1T-FwH" id="6UM-We-oHs"/>
+                        <outlet property="titleTextField" destination="nea-KN-b1G" id="LW9-El-V0S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWZ-Uu-aVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
